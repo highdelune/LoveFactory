@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jpdk_servlet_url>
+
+   <servlet_url_list url-prefix="/admin" package="lovefactory.admin.controller">
+   </servlet_url_list>
+   
+   <servlet_url_list url-prefix="/board" package="lovefactory.board.controller">
+   </servlet_url_list>
+  
+   <servlet_url_list url-prefix="/user" package="lovefactory.user.controller">
+      <servlet_url servlet="UserController" method="userAddView">    /userRegForm.svc    </servlet_url>
+      <servlet_url servlet="UserController" method="userAdd">        /userAdd.svc        </servlet_url>
+      <servlet_url servlet="UserController" method="userUpdateView"> /userUpdateView.svc </servlet_url>
+      <servlet_url servlet="UserController" method="userUpdate">     /userUpdate.svc     </servlet_url>
+      <servlet_url servlet="UserController" method="userDelView">    /userDelView.svc    </servlet_url>
+      <servlet_url servlet="UserController" method="userDel">        /userDel.svc        </servlet_url>
+      <servlet_url servlet="UserController" method="userLogin">      /userLogin.svc      </servlet_url>
+      <servlet_url servlet="UserController" method="userLoginView">  /userLoginView.svc  </servlet_url>
+   </servlet_url_list>
+
+</jpdk_servlet_url>

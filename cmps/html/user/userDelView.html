@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--[f, /common/common_css_script.html]-->
+
+<script>
+$(document).ready(function(){
+   $("#userDelForm").validate({
+      rules: {
+         user_id : {
+            maxlength : 30,
+            alphanum : true,
+            required : true
+         },
+         user_pw : {
+            maxlength : 20,
+            alphanum : true,
+            required : true
+         }
+      },
+      messages : {
+         user_id : {
+            maxlength : "30글자 이내로 작성해주세요",
+            alphanum : "영문과 숫자로만 입력해주세요"
+         },
+         user_pw : {
+            maxlength : "20글자 이내로 작성해주세요",
+            alphanum : "영문과 숫자로만 입력해주세요"
+         }
+      }
+   });
+});
+
+jQuery.validator.addMethod("alphanum", function(value, element) {
+   return this.optional(element) || /^([a-zA-Z0-9]+)$/.test(value);
+   }, "영문과 숫자로만 입력해 주세요"
+);
+
+function deleteUser() {
+   var ret = submitPage("/user/userDel.svc", {
+      "userId"    : $("#user_id").val(),
+      "userPw"    : $("#user_pw").val()
+   })
+}
+
+</script>
+
+<title>Insert title here</title>
+</head>
+<body>
+<form id = "userDelForm">
+   <table>
+      <tr>
+         <td>
+            아이디 : 
+         </td>
+         <td>
+            <input type="text"     id="user_id"   name="user_id" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            비밀번호 : 
+         </td>
+         <td>
+            <input type="password" id="user_pw"     name="user_pw" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <input type="button" id = "drop"   name = "drop"   value = "탈퇴" />
+         </td>
+         <td>
+            <input type="button" id = "cancel" name = "cancel" value = "취소" />
+         </td>
+      </tr>
+   </table>
+</form>
+</body>
+</html>

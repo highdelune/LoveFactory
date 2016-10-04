@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--[f, /common/common_css_script.html]-->
+
+<script>
+function registUser() {
+   var ret = submitPage("/user/userAdd.svc", {
+      "userId"    : $("#user_id").val(),
+      "userPw"    : $("#user_pw").val(),
+      "userNick"  : $("#user_nick").val(),
+      "userName"  : $("#user_name").val(),
+      "userPhone" : $("#user_phone").val()
+   })
+}
+
+</script>
+
+<title>Insert title here</title>
+</head>
+<body ng-controller="UserAddController">
+<div>
+   <table>
+      <tr>
+         <td>
+            아이디(Ex : example@lovefactory.co.kr) : 
+         </td>
+         <td>
+            <input type="email"    id="user_id"     name="user_id" />
+            <div role="alert">
+               <span class="error" ng-show="userAdd.input.$error.required">필수항목입니다</span>
+               <span class="error" ng-show="userAdd.input.$error.email">이메일 형식이 아닙니다</span>
+            </div>
+         </td>
+      </tr>
+      <tr>
+         <td>
+            비밀번호 : 
+         </td>
+         <td>
+            <input type="password" id="user_pw"     name="user_pw" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            비밀번호 확인 : 
+         </td>
+         <td>
+            <input type="password" id="user_pw_chk" name="user_pw_chk" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            닉네임 : 
+         </td>
+         <td>
+            <input type="text"     id="user_nick"   name="user_nick" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            이름 : 
+         </td>
+         <td>
+            <input type="text"     id="user_name"   name="user_name" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            휴대폰 번호 : 
+         </td>
+         <td>
+            <input type="number"   id="user_phone"  name="user_phone" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <input type="button" id = "regist" name = "regist" value = "가입" />
+         </td>
+         <td>
+            <input type="button" id = "cancel" name = "cancel" value = "취소" />
+         </td>
+      </tr>
+   </table>
+</div>
+</body>
+</html>

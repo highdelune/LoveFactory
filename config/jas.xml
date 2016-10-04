@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<jas version="2.0.0">
+   <home>D:/Utility/Android/webworkspace/LoveFactory</home>
+<!--    <home>/home/lovefactory/lovefactory</home> -->
+   <load type="auto" />
+   <security>
+      <key file="${jas.home}/license/jasframework.key" />
+   </security>
+   <license>
+      <key>${jas.home}/license/jas.lic</key>
+      <file>${jas.home}/license/jas-license.xml</file>
+   </license>
+   <system name="lovefactory" ip="" port="8080" mode="DEV">
+      <runtime-properties-class>koonisoft.jas.JasRuntimeProperties</runtime-properties-class>
+   </system>
+   <webapps default="lovefactory">
+      <webapp name="lovefactory" lang="" use_flex="true">
+         <home>${jas.home}/webapp</home>
+         <context path="lovefactory" />
+         <upload>
+            <home>${jas.home}/upload</home>
+            <temp>${jas.home}/upload/temp</temp>
+         </upload>
+         <charset>
+            <base>utf-8</base>
+            <client request="utf-8" response="utf-8" />
+         </charset>
+         <url-file-list>
+            <url-file name="default.url" type="FILE" charset="utf-8" format="XML">
+               <load type="auto" />
+               <path sub="false">${jas.home}/config/default.url</path>
+            </url-file>
+         </url-file-list>
+      </webapp>
+   </webapps>
+   <additional>
+      <config name="site.config" type="FILE" charset="utf-8" format="TEXT">
+         <load type="auto" />
+         <path sub="false">${jas.home}/config/site.conf</path>
+         <extension />
+      </config>
+   </additional>
+   <messages>
+      <message name="message" type="DIR" charset="utf-8" format="XML">
+         <load type="auto" />
+         <path sub="false">${jas.home}/config/message</path>
+         <extension />
+      </message>
+   </messages>
+   <run>
+      <thread name="ConfigLoader" max="1" sleep="2">
+         <class>koonisoft.jas.run.ConfigUpdate</class>
+         <period flag="5" time="2" />
+         <start time="2009/10/30 13:35:00" />
+      </thread>
+      <thread name="MessageLoader" max="1" sleep="2">
+         <class>koonisoft.jas.run.MessageUpdate</class>
+         <period flag="5" time="2" />
+         <start time="2009/10/30 13:34:00" />
+      </thread>
+      <thread name="QueryLoader" max="1" sleep="2">
+         <class>koonisoft.jas.run.QueryUpdate</class>
+         <period flag="5" time="5" />
+         <start time="2009/10/30 13:35:00" />
+      </thread>
+      <thread name="TemplateLoader" max="1" sleep="2">
+         <class>koonisoft.jas.run.TemplateUpdate</class>
+         <period flag="5" time="2" />
+         <start time="2009/10/30 13:35:00" />
+      </thread>
+      <thread name="LogCleaner" max="1" sleep="2">
+         <class>koonisoft.jas.run.LogCleaner</class>
+         <period flag="2" time="3" />
+         <start time="2009/10/30 13:35:00" />
+      </thread>
+   </run>
+   <log size="10" cleaner="0" default="system">
+      <home>${jas.home}/log</home>
+      <logger name="system" type="1" level="4">
+         <channel>syslog console</channel>
+         <header>[%Y/%m/%d %H:%M:%s]</header>
+         <footer />
+      </logger>
+   </log>
+   <log_channel>
+      <channel name="console" type="0" level="4" onlylevel="false">
+      </channel>
+      <channel name="syslog" type="1" level="4" onlylevel="false">
+         <file>${jas.log.home}/syslog.log</file>
+      </channel>
+   </log_channel>
+   <template default="html">
+      <file name="html" charset="utf-8">
+         <home>${jas.home}/cmps/html</home>
+         <extension>html,htm</extension>
+         <delim left="&lt;!--[" right="]--&gt;" />
+      </file>
+   </template>
+   <database default="masterdb">
+      <connection name="masterdb" type="1" xa_support="" charset="UTF-8" timeout="600">
+         <database_info>
+            <hosts>
+               <host ip="localhost" port="3306" service="ctc_db" vendor_type="MYSQL">
+                  <driver>org.gjt.mm.mysql.Driver</driver>
+                  <url manual_flag="false">jdbc:mysql://localhost:3306/lovefactory?autoReconnect=true</url>
+                  <user>lovefactory</user>
+                  <password encode="false"><![CDATA[lovefactorydb!@#]]></password>
+                  <service>ctc_db</service>
+               </host>
+            </hosts>
+         </database_info>
+      </connection>
+      <connection name="slavedb" type="1" xa_support="" charset="UTF-8" timeout="600">
+         <database_info>
+            <hosts>
+               <host ip="localhost" port="3306" service="ctc_db" vendor_type="MYSQL">
+                  <driver>org.gjt.mm.mysql.Driver</driver>
+                  <url manual_flag="false">jdbc:mysql://localhost:3306/lovefactory?autoReconnect=true</url>
+                  <user>lovefactory</user>
+                  <password encode="false"><![CDATA[lovefactorydb!@#]]></password>
+                  <service>ctc_db</service>
+               </host>
+            </hosts>
+         </database_info>
+      </connection>
+   </database>
+   <query>
+      <file name="query" type="DIR" charset="" format="XML">
+         <load type="auto" />
+         <path sub="true">${jas.home}/query</path>
+         <extension>sql</extension>
+      </file>
+   </query>
+</jas>

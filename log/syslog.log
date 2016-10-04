@@ -1,0 +1,15 @@
+[2016/10/04 02:23:24][][INFO] [Config] isModified() : A query directory[D:/Utility/Android/webworkspace/LoveFactory/query] was modified....
+[2016/10/04 02:24:06][][INFO] [Config] isModified() : A query file directory[D:/Utility/Android/webworkspace/LoveFactory/query] was modified....
+[2016/10/04 02:24:06][][INFO] [Config] isModified() : A query directory[D:/Utility/Android/webworkspace/LoveFactory/query] was modified....
+[2016/10/04 02:24:06][][INFO] The query config file named (D:\Utility\Android\webworkspace\LoveFactory\query\main.sql) --> loading completed.
+[2016/10/04 02:24:06][][INFO] The query config file named (D:\Utility\Android\webworkspace\LoveFactory\query\user.sql) --> loading completed.
+[2016/10/04 02:26:57][][INFO] There are 1 custom config file(s)
+[2016/10/04 02:26:57][][INFO] The custom config file named (D:/Utility/Android/webworkspace/LoveFactory/config/site.conf) --> loading completed.
+[2016/10/04 02:26:57][][INFO] There are 1 query file(s)
+[2016/10/04 02:26:57][][INFO] The query config file named (D:\Utility\Android\webworkspace\LoveFactory\query\main.sql) --> loading completed.
+[2016/10/04 02:26:57][][INFO] The query config file named (D:\Utility\Android\webworkspace\LoveFactory\query\user.sql) --> loading completed.
+[2016/10/04 02:26:57][][INFO] There are 1 message file(s)
+[2016/10/04 02:26:57][][INFO] The message file named (D:\Utility\Android\webworkspace\LoveFactory\config\message\message_ko.xml) --> loading...
+[2016/10/04 02:26:57][][INFO] The message file named (D:\Utility\Android\webworkspace\LoveFactory\config\message\message_ko.xml) --> loading completed.
+[2016/10/04 02:26:57][][INFO] There are 1 http url file(s)
+[2016/10/04 02:26:57][][INFO] The url file named (D:/Utility/Android/webworkspace/LoveFactory/config/default.url) --> loading completed.
