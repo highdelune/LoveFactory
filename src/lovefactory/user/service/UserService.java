@@ -1,7 +1,10 @@
 package lovefactory.user.service;
 
+import java.util.ArrayList;
+
 import koonisoft.jas.JasRuntimeProperties;
 import lovefactory.common.service.AbstractService;
+import lovefactory.user.Grade;
 import lovefactory.user.User;
 import lovefactory.user.dao.UserDao;
 
@@ -31,6 +34,11 @@ public class UserService extends AbstractService {
    public String userUpdate(User user) throws Exception {
       UserDao userDao = new UserDao(getRuntimeProp());
       return userDao.userUpdate(user);
+   }
+
+   public ArrayList<Grade> getGradeList() throws Exception {
+      UserDao userDao = new UserDao(getRuntimeProp());
+      return userDao.getGradeList();
    }
 
 }

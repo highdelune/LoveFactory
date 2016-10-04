@@ -1,11 +1,14 @@
 package lovefactory.user.dao;
 
+import java.util.ArrayList;
+
 import koonisoft.jas.JasRuntimeProperties;
 import koonisoft.jas.config.Config;
 import koonisoft.jas.db.Database;
 import koonisoft.jas.db.QueryHandler;
 import koonisoft.jas.db.ResultRow;
 import lovefactory.common.dao.AbstractDao;
+import lovefactory.user.Grade;
 import lovefactory.user.User;
 
 public class UserDao extends AbstractDao {
@@ -22,7 +25,7 @@ public class UserDao extends AbstractDao {
       Database db = null;
 
       try {
-         db = Database.getDatabase(runtimeProp, Config.getString("nanol.cartoonchat.admin.db.master"));
+         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.master"));
          
          QueryHandler qry = null;
          qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.insert");
@@ -52,7 +55,7 @@ public class UserDao extends AbstractDao {
       Database db = null;
       ResultRow rs = null;
       try {
-         db = Database.getDatabase(runtimeProp, Config.getString("nanol.cartoonchat.admin.db.slave"));
+         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.slave"));
          
          QueryHandler qry = null;
          qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.one.select");
@@ -89,7 +92,7 @@ public class UserDao extends AbstractDao {
       Database db = null;
       
       try{
-         db = Database.getDatabase(runtimeProp, Config.getString("nanol.cartoonchat.admin.db.master"));
+         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.master"));
          
          QueryHandler qry = null;
          qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.delete");
@@ -118,7 +121,7 @@ public class UserDao extends AbstractDao {
       Database db = null;
       
       try{
-         db = Database.getDatabase(runtimeProp, Config.getString("nanol.cartoonchat.admin.db.master"));
+         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.master"));
          
          QueryHandler qry = null;
          qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.update");
@@ -140,6 +143,42 @@ public class UserDao extends AbstractDao {
       }
       
       return retVal;
+   }
+
+   public ArrayList<Grade> getGradeList() throws Exception {
+      JasRuntimeProperties runtimeProp = getRuntimeProp();
+      
+      ArrayList<Grade> gradeList = new ArrayList<Grade>();
+      
+      Database db = null;
+      ResultRow rs = null;
+      try {
+         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.slave"));
+         
+         QueryHandler qry = null;
+         qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.grade.list.select");
+         
+         rs = db.query(qry);
+         if( rs.nextRow() ) {
+            Grade grade = new Grade();
+            
+            grade.setGradeCode(rs.getInteger("GRADE_CODE"));
+            grade.setGradeName(rs.getString("GRADE_NAME"));
+            grade.setGradeDesc(rs.getString("GRADE_DESC"));
+            
+            gradeList.add(grade);
+         }
+
+         rs.close();
+         db.close();
+         rs = null;
+         db = null;
+      } finally {
+         if( null != db ) { db.close(); db = null; }
+         if( null != rs ) { rs.close(); rs = null; }
+      }
+      
+      return gradeList;
    }
 
 }
