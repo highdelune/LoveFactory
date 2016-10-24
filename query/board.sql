@@ -33,7 +33,7 @@ LEFT OUTER JOIN LF_USER LU
       
       <query id="lovefactory.board.detail.select">
          <sql><![CDATA[
-         SELECT LB.BOARD_ID, LB.ARTICLE_ID, LB.ARTICLE_NAME, LB.CONTENTS, LC.COMMENT, LU.USER_NICK 
+         SELECT LB.BOARD_ID, LB.ARTICLE_ID, LB.ARTICLE_NAME, LB.CONTENTS, LC.COMMENT, LU.USER_NICK , LB.UPDATE_TIME AS BOARD_UPDATE, LC.UPDATE_TIME AS COMMENT_UPDATE
            FROM LF_BOARD LB
      INNER JOIN LF_COMMENTS LC
              ON LC.ARTICLE_ID = LB.ARTICLE_ID
@@ -42,6 +42,27 @@ LEFT OUTER JOIN LF_USER LU
 LEFT OUTER JOIN LF_USER LU
              ON LC.USER_NICK = LU.USER_NICK
           WHERE LB.ARTICLE_ID = [ARTICLE_ID]
+       ORDER BY LC.UPDATE_TIME
+          ]]></sql>
+      </query>
+      
+      <query id="lovefactory.board.comment.select">
+         <sql><![CDATA[
+SELECT CONCAT(REPEAT('  ', level  - 1), LU.USER_ID) AS name, LC.COMMENT, LC.COMMENT_ID, LC.PARENT_ID, FUNC.level FROM
+(
+SELECT dept_connect_by_parent([ARTICLE_ID]) AS id, @level as level
+    FROM    (
+        SELECT  @start_with := 0,
+                      @id := @start_with,
+                      @level := 0
+         ) vars, LF_COMMENTS
+            WHERE   @id IS NOT NULL
+) FUNC
+Join LF_COMMENTS LC
+ON FUNC.COMMENT_ID = LC.COMMENT_ID
+INNER JOIN LF_USER LU
+        ON LC.USER_IDX = LU.USER_IDX
+     WHERE LC.ARTICLE_ID = [ARTICLE_ID]
           ]]></sql>
       </query>
       
