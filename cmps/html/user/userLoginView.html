@@ -5,7 +5,11 @@
 <!--[f, /common/common_css_script.html]-->
 
 <script>
-
+$(document).ready(function(){
+   $("#register").click(function(){
+      document.href = "user/userRegForm.svc";
+   });
+});
 
 </script>
 
@@ -33,6 +37,7 @@
       <tr>
          <td>
             <input type="button" id = "login"  name = "login"  value = "로그인" />
+            <input type="button" id = "register"  name = "register"  value = "회원가입" />
          </td>
          <td>
             <input type="button" id = "cancel" name = "cancel" value = "취소" />

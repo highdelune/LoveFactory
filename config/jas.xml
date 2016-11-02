@@ -10,13 +10,13 @@
       <key>${jas.home}/license/jas.lic</key>
       <file>${jas.home}/license/jas-license.xml</file>
    </license>
-   <system name="lovefactory" ip="" port="8080" mode="DEV">
+   <system name="LoveFactory" ip="" port="8080" mode="DEV">
       <runtime-properties-class>koonisoft.jas.JasRuntimeProperties</runtime-properties-class>
    </system>
-   <webapps default="lovefactory">
-      <webapp name="lovefactory" lang="" use_flex="true">
+   <webapps default="LoveFactory">
+      <webapp name="LoveFactory" lang="" use_flex="true">
          <home>${jas.home}/webapp</home>
-         <context path="lovefactory" />
+         <context path="LoveFactory" />
          <upload>
             <home>${jas.home}/upload</home>
             <temp>${jas.home}/upload/temp</temp>
