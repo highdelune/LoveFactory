@@ -1,4 +1,4 @@
-package lovefactory.common.dao;
+package community.common.dao;
 
 import koonisoft.jas.JasRuntimeProperties;
 

@@ -4326,15 +4326,15 @@ nhn.husky.SE_EditingArea_WYSIWYG = jindo.$Class({
 	
 		// IE8 : 찾기/바꾸기에서 글자 일부에 스타일이 적용된 경우 찾기가 안되는 브라우저 버그로 인해 EmulateIE7 파일을 사용
 		// <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-		this.sBlankPageURL = "smart_editor2_inputarea.html";
-		this.sBlankPageURL_EmulateIE7 = "smart_editor2_inputarea_ie8.html";
+		this.sBlankPageURL = "load_inputarea.svc";
+		this.sBlankPageURL_EmulateIE7 = "load_inputarea_ie8.svc";
 		this.aAddtionalEmulateIE7 = [];
 
 		this.htOptions = nhn.husky.SE2M_Configuration.SE_EditingAreaManager;	
 		if (this.htOptions) {
-			this.sBlankPageURL = this.htOptions.sBlankPageURL || this.sBlankPageURL;
-			this.sBlankPageURL_EmulateIE7 = this.htOptions.sBlankPageURL_EmulateIE7 || this.sBlankPageURL_EmulateIE7;
-			this.aAddtionalEmulateIE7 = this.htOptions.aAddtionalEmulateIE7 || this.aAddtionalEmulateIE7;
+//			this.sBlankPageURL = this.htOptions.sBlankPageURL || this.sBlankPageURL;
+//			this.sBlankPageURL_EmulateIE7 = this.htOptions.sBlankPageURL_EmulateIE7 || this.sBlankPageURL_EmulateIE7;
+//			this.aAddtionalEmulateIE7 = this.htOptions.aAddtionalEmulateIE7 || this.aAddtionalEmulateIE7;
 		}
 		
 		this.aAddtionalEmulateIE7.push(8); // IE8은 Default 사용
@@ -4343,7 +4343,6 @@ nhn.husky.SE_EditingArea_WYSIWYG = jindo.$Class({
 		if(oAgent.ie && jindo.$A(this.aAddtionalEmulateIE7).has(oAgent.nativeVersion)) {
 			this.sIFrameSrc = this.sBlankPageURL_EmulateIE7;
 		}
-		
 		var sIFrameSrc = this.sIFrameSrc,
 			iframe = this.iframe,
 			fHandlerSuccess = jindo.$Fn(this.initIframe, this).bind(),
@@ -5411,12 +5410,11 @@ nhn.husky.SE_EditingArea_WYSIWYG = jindo.$Class({
 				throw new Error('Access denied');
 			}
 
-			var sCSSBaseURI = (!!nhn.husky.SE2M_Configuration.SE2M_CSSLoader && nhn.husky.SE2M_Configuration.SE2M_CSSLoader.sCSSBaseURI) ? 
-					nhn.husky.SE2M_Configuration.SE2M_CSSLoader.sCSSBaseURI : "";
+			var sCSSBaseURI = context + '/css';
 
-			if(!!nhn.husky.SE2M_Configuration.SE_EditingAreaManager.sCSSBaseURI){
-				sCSSBaseURI = nhn.husky.SE2M_Configuration.SE_EditingAreaManager.sCSSBaseURI;
-			}
+//			if(!!nhn.husky.SE2M_Configuration.SE_EditingAreaManager.sCSSBaseURI){
+//				sCSSBaseURI = nhn.husky.SE2M_Configuration.SE_EditingAreaManager.sCSSBaseURI;
+//			}
 
 			// add link tag
 			if (sCSSBaseURI){
@@ -16452,9 +16450,9 @@ nhn.husky.SE2B_CSSLoader = jindo.$Class({
 		if(sMsg){
 			fnCallback = jindo.$Fn(this.oApp.exec, this.oApp).bind(sMsg, oArgs);
 		}
-		
+
 		//nhn.husky.SE2M_Utils.loadCSS("css/smart_editor2.css");
-		nhn.husky.SE2M_Utils.loadCSS(this.htOptions.sCSSBaseURI+"/smart_editor2_items.css", fnCallback);
+		nhn.husky.SE2M_Utils.loadCSS(context + "/css/smart_editor2_items.css", fnCallback);
 
 		return false;
 	}

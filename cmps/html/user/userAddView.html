@@ -1,30 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html ng-app>
+<!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--[f, /common/common_css_script.html]-->
 
 <script>
-function registUser() {
-   var ret = submitPage("/user/userAdd.svc", {
-      "userId"    : $("#user_id").val(),
-      "userPw"    : $("#user_pw").val(),
-      "userNick"  : $("#user_nick").val(),
-      "userName"  : $("#user_name").val(),
-      "userPhone" : $("#user_phone").val()
-   })
-}
+$(document).ready(function(){
+   $("#regist").click(function() {
+	   var ret = submitPage("<!--[c, jas.system.context.path]-->/user/userAdd.svc", {
+	      "userId"    : $("#user_id").val(),
+	      "userPw"    : $("#user_pw").val(),
+	      "userNick"  : $("#user_nick").val(),
+	      "userName"  : $("#user_name").val(),
+	      "userPhone" : $("#user_phone").val()
+	   })
+	   ret = jQuery.trim(ret);
+	   
+	   if( ret.length > 0 ) {
+	      var repFlag = ret.charAt(0);
+	      
+	      if( "S" == repFlag ) {  // Success
+	         alert("회원가입이 완료되었습니다.");
+	         document.location.href = "<!--[c, jas.system.context.path]-->/user/userLoginView.svc";
+	      
+	      } else if( "F" == repFlag ) { // Fail
+	
+	      }
+	   }
+	});
+});
 
 </script>
 
 <title>Insert title here</title>
 </head>
-<body ng-controller="UserAddController">
+<body>
 <div>
    <table>
       <tr>
          <td>
-            아이디(Ex : example@lovefactory.co.kr) : 
+            아이디(Ex : example@community.co.kr) : 
          </td>
          <td>
             <input type="email"    id="user_id"     name="user_id" />

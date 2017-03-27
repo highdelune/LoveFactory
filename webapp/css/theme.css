@@ -6728,7 +6728,6 @@ button.close {
 /* Custom styles */
 
 body {
-    padding-top: 80px;
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -6757,7 +6756,7 @@ body {
 .carousel-control-arrow {
 	position: relative;
 	line-height: 100%;
-	font-family: "Helvetica Neue",​Helvetica,​Arial,​sans-serif;
+	font-family: "Helvetica Neue",�딫elvetica,�딞rial,�땣ans-serif;
 	font-size: 64px;
 	margin-top: -32px;
 	top: 50%;
@@ -6838,7 +6837,6 @@ body {
 }
 
 .container-clients {
-	padding-top: 50px;
 	padding-bottom: 60px;
 }
 

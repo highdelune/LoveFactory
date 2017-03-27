@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jpdk_servlet_url>
 
-   <servlet_url_list url-prefix="/admin" package="lovefactory.admin.controller">
+   <servlet_url_list url-prefix="/admin" package="community.admin.controller">
+      <servlet_url servlet="AdminController" method="adminMenuView"> /menu.svc </servlet_url>
    </servlet_url_list>
    
-   <servlet_url_list url-prefix="/board" package="lovefactory.board.controller">
+   <servlet_url_list url-prefix="/board" package="community.board.controller">
+      <servlet_url servlet="BoardController" method="communityView"> /community.svc </servlet_url>
+      <servlet_url servlet="BoardController" method="boardWriteView">/write.svc </servlet_url>
+      <servlet_url servlet="BoardController" method="saveContent">/saveContent.svc </servlet_url>
+      <servlet_url servlet="BoardController" method="contentview">/contentview.svc </servlet_url>
+      <servlet_url servlet="BoardController" method="loadSmartEditorSkin">/loadEditor.svc</servlet_url>
+      <servlet_url servlet="BoardController" method="loadInputArea">/load_inputarea.svc</servlet_url>
+      <servlet_url servlet="BoardController" method="loadInputArea8">/load_inputarea_ie8.svc</servlet_url>
+      <servlet_url servlet="BoardController" method="photoUpload">/photo_upload.svc</servlet_url>
+      <servlet_url servlet="BoardController" method="photoUploadView">/photo_upload_view.svc</servlet_url>
    </servlet_url_list>
   
-   <servlet_url_list url-prefix="/user" package="lovefactory.user.controller">
+   <servlet_url_list url-prefix="/user" package="community.user.controller">
       <servlet_url servlet="UserController" method="userAddView">    /userRegForm.svc    </servlet_url>
       <servlet_url servlet="UserController" method="userAdd">        /userAdd.svc        </servlet_url>
-      <servlet_url servlet="UserController" method="userUpdateView"> /userUpdateView.svc </servlet_url>
+      <servlet_url servlet="UserController" method="userUpdateView"> /userUpdateForm.svc </servlet_url>
       <servlet_url servlet="UserController" method="userUpdate">     /userUpdate.svc     </servlet_url>
-      <servlet_url servlet="UserController" method="userDelView">    /userDelView.svc    </servlet_url>
       <servlet_url servlet="UserController" method="userDel">        /userDel.svc        </servlet_url>
       <servlet_url servlet="UserController" method="userLogin">      /userLogin.svc      </servlet_url>
       <servlet_url servlet="UserController" method="userLoginView">  /userLoginView.svc  </servlet_url>
+   </servlet_url_list>
+   
+   <servlet_url_list url-prefix="" package="community.common.controller">
+      <servlet_url servlet="MainController" method="mainView">  /main.svc      </servlet_url>
+      <servlet_url servlet="MainController" method="topView">        /top.svc            </servlet_url>
+      <servlet_url servlet="MainController" method="mainFrameView">       /mainFrame.svc           </servlet_url>
    </servlet_url_list>
 
 </jpdk_servlet_url>

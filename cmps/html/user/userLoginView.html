@@ -7,7 +7,47 @@
 <script>
 $(document).ready(function(){
    $("#register").click(function(){
-      document.href = "user/userRegForm.svc";
+      document.location.href = "<!--[c, jas.system.context.path]-->/user/userRegForm.svc";
+   });
+   
+   $("#login").click(function() {
+      var loginID = jQuery.trim($("#user_id").val());
+      var passwd = jQuery.trim($("#user_pw").val());
+
+      if( loginID == "" ) {
+         alert("ID 를 입력하세요.");
+         $("#user_id").select();
+         $("#user_id").focus();
+         return;
+      }
+
+      if( passwd == "" ) {
+         alert("Password 를 입력하세요.");
+         $("#user_pw").select();
+         $("#user_pw").focus();
+         return;
+      }
+
+      var repVal = submitPage("<!--[c, jas.system.context.path]-->/user/userLogin.svc",{LOGINID : loginID, PASSWD : passwd}); 
+      //alert("rep : " + repVal);
+      repVal = jQuery.trim(repVal);
+
+      if( repVal.length > 0 ) {
+         var repFlag = repVal.charAt(0);
+         
+         if( "S" == repFlag ) {  // Success
+            document.location.href = "<!--[c, jas.system.context.path]-->/main.svc";
+         
+         } else if( "F" == repFlag ) { // Fail
+            var reasonFlag = repVal.charAt(1);
+
+            if( "1" == reasonFlag ) {
+               alert("등록되지 않은 사용자입니다.");
+            } else if( "2" == reasonFlag ) {
+               alert("비밀번호가 맞지 않습니다.");
+            }
+         }
+      }
    });
 });
 
@@ -20,7 +60,7 @@ $(document).ready(function(){
    <table>
       <tr>
          <td>
-            아이디(Ex : example@lovefactory.co.kr) : 
+            아이디(Ex : example@community.co.kr) : 
          </td>
          <td>
             <input type="text"     id="user_id"   name="user_id" />

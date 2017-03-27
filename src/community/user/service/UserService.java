@@ -1,12 +1,12 @@
-package lovefactory.user.service;
+package community.user.service;
 
 import java.util.ArrayList;
 
 import koonisoft.jas.JasRuntimeProperties;
-import lovefactory.common.service.AbstractService;
-import lovefactory.user.Grade;
-import lovefactory.user.User;
-import lovefactory.user.dao.UserDao;
+import community.common.service.AbstractService;
+import community.user.Grade;
+import community.user.User;
+import community.user.dao.UserDao;
 
 public class UserService extends AbstractService {
 

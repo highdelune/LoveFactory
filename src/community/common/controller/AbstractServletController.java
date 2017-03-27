@@ -1,4 +1,4 @@
-package lovefactory.common.controller;
+package community.common.controller;
 
 import java.util.Calendar;
 
@@ -13,8 +13,8 @@ import koonisoft.jas.http.iSession;
 import koonisoft.jas.log.Logger;
 import koonisoft.jas.util.JasData;
 import koonisoft.jas.util.page.JasPage;
-import lovefactory.Constants;
-import lovefactory.user.User;
+import community.Constants;
+import community.user.User;
 
 public class AbstractServletController extends JasHttpServlet {
 
@@ -31,7 +31,7 @@ public class AbstractServletController extends JasHttpServlet {
       User loginUser = getLoginUser(req);
       
       if( null == loginUser && bFlag ) {
-         TextBinder repBinder = koonisoft.jas.binder.TextBinder.createInstance(runtimeProp,"alert.html");
+         TextBinder repBinder = koonisoft.jas.binder.TextBinder.createInstance(runtimeProp,"/common/alert.html");
          repBinder.replace("MESSAGE", "Session Expired !!!");
          repBinder.replace("NEXT_URL", "/");
          rep.out(repBinder);
@@ -42,7 +42,7 @@ public class AbstractServletController extends JasHttpServlet {
    
    protected void outPermissionDenied(HttpRequest req, HttpResponse rep) throws Exception {
       JasRuntimeProperties runtimeProp = req.getRuntimeProperties();
-      TextBinder repBinder = koonisoft.jas.binder.TextBinder.createInstance(runtimeProp,"alert.html");
+      TextBinder repBinder = koonisoft.jas.binder.TextBinder.createInstance(runtimeProp,"/common/alert.html");
       repBinder.replace("MESSAGE", "Permission Denied !!!");
       repBinder.replace("NEXT_URL", "/");
       rep.out(repBinder);
@@ -110,8 +110,7 @@ public class AbstractServletController extends JasHttpServlet {
       
       boolean retFlag = false;
       if( null != loginUser ) {
-         retFlag = Constants.SUPER_ADMIN_USER_TYPE.equals(loginUser.getUserType())
-                   || Constants.ADMIN_USER_TYPE.equals(loginUser.getUserType());
+         retFlag = Constants.ADMIN_USER_TYPE.equals(loginUser.getUserType());
       }
       return retFlag;
    }

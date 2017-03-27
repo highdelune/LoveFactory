@@ -1,4 +1,4 @@
-package lovefactory.user;
+package community.user;
 
 public class Grade {
    private int gradeCode = 0;

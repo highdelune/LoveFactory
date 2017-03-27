@@ -1,4 +1,4 @@
-package lovefactory.user;
+package community.user;
 
 import java.util.Calendar;
 

@@ -1,11 +1,11 @@
-package lovefactory.util;
+package community.util;
 
 import koonisoft.jas.JasRuntimeProperties;
 import koonisoft.jas.binder.TextBinder;
 import koonisoft.jas.http.HttpRequest;
 import koonisoft.jas.http.HttpResponse;
 import koonisoft.jas.http.iSession;
-import lovefactory.Constants;
+import community.Constants;
 
 public class SessionUtil {
    public static void sessionCheck(HttpRequest req, HttpResponse rep) throws Exception {

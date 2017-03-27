@@ -1,156 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Home | Business Services Bootstrap Theme</title>
-
-	<!-- CSS includes -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="css/theme.css" rel="stylesheet">
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+<!--[f, /common/common_css_script.html]-->
+<!--[f, /common/board_script.html]-->
+<link href="<!--[c, jas.system.context.path]-->/css/board/winterblues.css" rel="stylesheet">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>
+   div{
+      display:inline-block;
+      position:relative;
+   }
+   .buttons{
+      width:70%;
+      float:right;
+   }
+   .board_table{
+      float:right;
+   }
+   </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a href="index.html" title="Business Services Theme">
-                <img class="img-responsive" src="images/logo.png" alt="Business Services Bootstrap Theme"/>
-            </a>
-		</div>
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.html">HOME</a></li>
-				<li><a href="about.html">ABOUT</a></li>
-				<li><a href="services.html">SERVICES</a></li>
-				<li class="active"><a href="clients.html" class="smooth-scroll">CLIENTS</a></li>
-				<li><a href="contact.html">CONTACT</a></li>
-			</ul>
-		</div><!-- /.navbar-collapse -->
-	</div><!-- /.container-fluid -->
-</nav>
-
 <div class="container-clients">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<p style="font-size:50px; color:#3498db; margin-bottom:20px;">Our Clients</p>
-				<hr width="70%" style="border-color:#3498db;">
-			</div>
-        </div>
-		<div class="row">
-            <div class="col-md-3">
-				<img src="images/client1.jpg" class="img-responsive" style="margin:auto;" />
-			</div>
-			<div class="col-md-3">
-				<img src="images/client2.jpg" class="img-responsive" style="margin:auto;" />
-			</div>
-			<div class="col-md-3">
-				<img src="images/client3.jpg" class="img-responsive" style="margin:auto;" />
-			</div>
-			<div class="col-md-3">
-				<img src="images/client4.jpg" class="img-responsive" style="margin:auto;" />
-			</div>
-		</div>
-		<div class="row">
-            <div class="col-md-3">
-				<img src="images/client5.jpg" class="img-responsive" style="margin:auto;" />
-			</div>
-			<div class="col-md-3">
-				<img src="images/client6.jpg" class="img-responsive" style="margin:auto;" />
-			</div>
-			<div class="col-md-3">
-				<img src="images/client7.jpg" class="img-responsive" style="margin:auto;" />
-			</div>
-			<div class="col-md-3">
-				<img src="images/client8.jpg" class="img-responsive" style="margin:auto;" />
-			</div>
-		</div>
-	</div>
+   <div class="container">
+      <div  style="width:30%; text-align:center; height:100%;">
+	      <table class="board_list_table" border="1" style="margin:0 auto;">
+	         <tr class="board_list_tr" style="">
+	            <th class="board_list_th" style="">게시판이름</th>
+	         </tr>
+<!--[l, BOARD_LIST]-->
+<tr style="">
+   <td class="board_list_td" style=""><a href="<!--[c, jas.system.context.path]-->/board/community.svc?bbsNo=<!--[r, BOARD_ID]-->"><!--[r, BOARD_NAME]--></a></td>
+</tr>
+<!--[/BOARD_LIST]-->
+         </table>
+      </div>
+      
+      <div class="board_table" style="width:70%;">
+         <table>
+            <tr>
+               <th>글번호</th>
+               <th>제목</th>
+               <th>작성자</th>
+               <th>작성일</th>
+               <th>조회</th>
+            </tr>
+   <!--[l, CONTENT_LIST]-->
+            <tr>
+               <td><!--[r, CONTENT_NUM]--></td>
+               <td><a href="<!--[c, jas.system.context.path]-->/board/contentview.svc?content=<!--[r, CONTENT_NUM]-->"><!--[r, CONTENT_TITLE]--></a></td>
+               <td><!--[r, CONTENT_WRITER]--></td>
+               <td><!--[r, CONTENT_DATE]--></td>
+               <td><!--[r, CONTENT_READ]--></td>
+            </tr>
+   <!--[/CONTENT_LIST]-->
+         </table>
+      </div>
+      <div class="paging">
+         
+      </div>
+      <div class="buttons">
+         <input type="button" id="bbs_write" name="bbs_write" value="등록"/>
+      </div>
+   </div>
 </div>
-
-<div class="container-clients" style="background-image:url(images/background-clients.jpg); background-positon:50% 50%; background-attachment:fixed; background-repeat:no-repeat; background-size:cover;">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-                <br />
-                <h1 style="color:#3498db;">
-                    <span class="hidden-xs" style="font-size:80px;">Delivering</span>
-                    <span class="visible-xs">Delivering</span>
-                </h1>
-                <h1>
-                    <span class="hidden-xs" style="font-size:64px;">Better Experiences</span>
-                    <span class="visible-xs">Better Experiences</span>
-                </h1>
-                <br />
-			</div>
-		</div>
-	</div>
-</div>
-
-<footer id="subfooter" class="clearfix">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p style="font-size:18px;"><span class="fa fa-envelope-o text-color:#fff"></span> NEWSLETTER</p>
-                <p>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Enter your email..." />
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button">Subscribe</button>
-                        </span>
-                    </div>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<footer id="footer" class="clearfix">
-    <div class="container">
-        <div class="row">
-			<div class="col-md-4">
-                <p>54, North Road, PA 45086, USA</p>
-                <p>+1 888 455 6677</p>
-                <p><a href="mailto:mail@example.com">mail@example.com</a></p>
-			</div>
-            <div class="col-md-4">
-                <p>
-                    <a class="fa fa-twitter footer-socialicon" target="_blank" href="https://twitter.com/"></a>
-                    <a class="fa fa-facebook footer-socialicon" target="_blank" href="https://www.facebook.com/"></a>
-                    <a class="fa fa-google-plus footer-socialicon" target="_blank" href="https://plus.google.com/"></a>
-                    <a class="fa fa-linkedin footer-socialicon" target="_blank" href="https://plus.google.com/"></a>
-                </p>
-            </div>
-            <div class="col-md-4">
-                <p>Created by <a href="https://www.shieldui.com" title="Shield UI">Shield UI</a> and hosted by <a href="https://www.prepbootstrap.com" title="PrepBootstrap">PrepBootstrap</a></p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-<script src="js/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>

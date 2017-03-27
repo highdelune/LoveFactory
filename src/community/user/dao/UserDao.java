@@ -1,4 +1,4 @@
-package lovefactory.user.dao;
+package community.user.dao;
 
 import java.util.ArrayList;
 
@@ -7,9 +7,9 @@ import koonisoft.jas.config.Config;
 import koonisoft.jas.db.Database;
 import koonisoft.jas.db.QueryHandler;
 import koonisoft.jas.db.ResultRow;
-import lovefactory.common.dao.AbstractDao;
-import lovefactory.user.Grade;
-import lovefactory.user.User;
+import community.common.dao.AbstractDao;
+import community.user.Grade;
+import community.user.User;
 
 public class UserDao extends AbstractDao {
 
@@ -25,10 +25,10 @@ public class UserDao extends AbstractDao {
       Database db = null;
 
       try {
-         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.master"));
+         db = Database.getDatabase(runtimeProp, Config.getString("community.admin.db.master"));
          
          QueryHandler qry = null;
-         qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.insert");
+         qry = QueryHandler.createInstance(runtimeProp, "community.user.insert");
          
          qry.replaceValue("USER_ID", user.getUserID());
          qry.replaceValue("USER_PW", user.getPassword());
@@ -38,6 +38,8 @@ public class UserDao extends AbstractDao {
          qry.replaceValue("USER_PHONE", user.getUserPhone());
          qry.replaceValue("USER_TYPE", user.getUserType());
          qry.replaceValue("USER_STATE", user.getUserState());
+         
+         db.update(qry);
          
          db.close();
          db = null;
@@ -55,10 +57,10 @@ public class UserDao extends AbstractDao {
       Database db = null;
       ResultRow rs = null;
       try {
-         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.slave"));
+         db = Database.getDatabase(runtimeProp, Config.getString("community.admin.db.slave"));
          
          QueryHandler qry = null;
-         qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.one.select");
+         qry = QueryHandler.createInstance(runtimeProp, "community.user.one.select");
          qry.replaceValue("USER_ID", user.getLoginID());
          qry.replaceValue("USER_PW", user.getPassword());
          
@@ -92,10 +94,10 @@ public class UserDao extends AbstractDao {
       Database db = null;
       
       try{
-         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.master"));
+         db = Database.getDatabase(runtimeProp, Config.getString("community.admin.db.master"));
          
          QueryHandler qry = null;
-         qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.delete");
+         qry = QueryHandler.createInstance(runtimeProp, "community.user.delete");
          
          qry.replaceValue("USER_ID", user.getUserID());
          qry.replaceValue("USER_PW", user.getPassword());
@@ -121,10 +123,10 @@ public class UserDao extends AbstractDao {
       Database db = null;
       
       try{
-         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.master"));
+         db = Database.getDatabase(runtimeProp, Config.getString("community.admin.db.master"));
          
          QueryHandler qry = null;
-         qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.update");
+         qry = QueryHandler.createInstance(runtimeProp, "community.user.update");
          
          qry.replaceValue("USER_ID",     user.getUserID());
          qry.replaceValue("USER_PW",     user.getPassword());
@@ -153,10 +155,10 @@ public class UserDao extends AbstractDao {
       Database db = null;
       ResultRow rs = null;
       try {
-         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.slave"));
+         db = Database.getDatabase(runtimeProp, Config.getString("community.admin.db.slave"));
          
          QueryHandler qry = null;
-         qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.grade.list.select");
+         qry = QueryHandler.createInstance(runtimeProp, "community.user.grade.list.select");
          
          rs = db.query(qry);
          if( rs.nextRow() ) {

@@ -1,4 +1,4 @@
-package lovefactory.admin.dao;
+package community.admin.dao;
 
 import java.util.ArrayList;
 
@@ -7,8 +7,8 @@ import koonisoft.jas.config.Config;
 import koonisoft.jas.db.Database;
 import koonisoft.jas.db.QueryHandler;
 import koonisoft.jas.db.ResultRow;
-import lovefactory.common.dao.AbstractDao;
-import lovefactory.user.User;
+import community.common.dao.AbstractDao;
+import community.user.User;
 
 public class AdminDao extends AbstractDao {
 
@@ -24,10 +24,10 @@ public class AdminDao extends AbstractDao {
       Database db = null;
 
       try {
-         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.master"));
+         db = Database.getDatabase(runtimeProp, Config.getString("community.admin.db.master"));
          
          QueryHandler qry = null;
-         qry = QueryHandler.createInstance(runtimeProp, "lovefactory.admin.user.delete");
+         qry = QueryHandler.createInstance(runtimeProp, "community.admin.user.delete");
          
          qry.replaceValue("USER_ID", user.getUserID());
          
@@ -48,10 +48,10 @@ public class AdminDao extends AbstractDao {
       Database db = null;
       ResultRow rs = null;
       try {
-         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.slave"));
+         db = Database.getDatabase(runtimeProp, Config.getString("community.admin.db.slave"));
          
          QueryHandler qry = null;
-         qry = QueryHandler.createInstance(runtimeProp, "lovefactory.user.list.select");
+         qry = QueryHandler.createInstance(runtimeProp, "community.user.list.select");
          
          rs = db.query(qry);
          if( rs.nextRow() ) {
@@ -86,10 +86,10 @@ public class AdminDao extends AbstractDao {
       Database db = null;
 
       try {
-         db = Database.getDatabase(runtimeProp, Config.getString("lovefactory.admin.db.master"));
+         db = Database.getDatabase(runtimeProp, Config.getString("community.admin.db.master"));
          
          QueryHandler qry = null;
-         qry = QueryHandler.createInstance(runtimeProp, "lovefactory.admin.user.grade.update");
+         qry = QueryHandler.createInstance(runtimeProp, "community.admin.user.grade.update");
          
          qry.replaceValue("USER_ID",    user.getUserID());
          qry.replaceValue("USER_LEVEL", user.getUserLevel());

@@ -3,7 +3,7 @@
    <query_list>
       <typeAlias alias="JasData" type="koonisoft.jas.util.JasData" />
       
-      <query id="lovefactory.user.delete">
+      <query id="community.user.delete">
          <sql><![CDATA[
          UPDATE LF_USER
             SET USER_STATE = 'DEACTIVATED',
@@ -12,7 +12,7 @@
           ]]></sql>
       </query>
       
-      <query id="lovefactory.admin.user.grade.update">
+      <query id="community.admin.user.grade.update">
          <sql><![CDATA[
          UPDATE LF_USER
             SET USER_LEVEL = [USER_LEVEL]

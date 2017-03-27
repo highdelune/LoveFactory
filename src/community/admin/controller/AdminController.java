@@ -1,4 +1,4 @@
-package lovefactory.admin.controller;
+package community.admin.controller;
 
 import java.util.ArrayList;
 
@@ -9,19 +9,32 @@ import koonisoft.jas.binder.iLoop;
 import koonisoft.jas.http.HttpRequest;
 import koonisoft.jas.http.HttpResponse;
 import koonisoft.jas.log.Logger;
-import lovefactory.admin.service.AdminService;
-import lovefactory.board.Board;
-import lovefactory.board.service.BoardService;
-import lovefactory.common.controller.AbstractServletController;
-import lovefactory.user.Grade;
-import lovefactory.user.User;
-import lovefactory.user.service.UserService;
+import community.admin.service.AdminService;
+import community.board.Board;
+import community.board.service.BoardService;
+import community.common.controller.AbstractServletController;
+import community.user.Grade;
+import community.user.User;
+import community.user.service.UserService;
 
 public class AdminController extends AbstractServletController {
+   
+   public void adminMenu(HttpRequest req, HttpResponse rep) throws Exception {
+      JasRuntimeProperties runtimeProp = req.getRuntimeProperties();
+      Logger logger = getLogger(req);
+      sessionCheck(req, rep);
+      if( !isAdmin(req) ) outPermissionDenied(req, rep);
+      
+      TextBinder repBinder = TextBinder.createInstance(runtimeProp, "/admin/adminMenu.html");
+      
+      rep.out(repBinder);
+   }
    
    public void userListView(HttpRequest req, HttpResponse rep) throws Exception {
       JasRuntimeProperties runtimeProp = req.getRuntimeProperties();
       Logger logger = getLogger(req);
+      sessionCheck(req, rep);
+      if( !isAdmin(req) ) outPermissionDenied(req, rep);
 
       TextBinder repBinder = TextBinder.createInstance(runtimeProp,"/admin/userListView.html");
       iLoop      userLoop  = repBinder.createLoop("USER_LIST");
@@ -65,6 +78,8 @@ public class AdminController extends AbstractServletController {
    public void userBan(HttpRequest req, HttpResponse rep) throws Exception {
       JasRuntimeProperties runtimeProp = req.getRuntimeProperties();
       Logger logger = getLogger(req);
+      sessionCheck(req, rep);
+      if( !isAdmin(req) ) outPermissionDenied(req, rep);
       
       User user = new User();
       user.setUserID(req.getString("USER_ID"));
@@ -79,6 +94,8 @@ public class AdminController extends AbstractServletController {
    public void userGradeUpdate(HttpRequest req, HttpResponse rep) throws Exception {
       JasRuntimeProperties runtimeProp = req.getRuntimeProperties();
       Logger logger = getLogger(req);
+      sessionCheck(req, rep);
+      if( !isAdmin(req) ) outPermissionDenied(req, rep);
       
       User user = new User();
       user.setUserID(req.getString("USER_ID"));
@@ -94,6 +111,8 @@ public class AdminController extends AbstractServletController {
    public void boardList(HttpRequest req, HttpResponse rep) throws Exception {
       JasRuntimeProperties runtimeProp = req.getRuntimeProperties();
       Logger logger = getLogger(req);
+      sessionCheck(req, rep);
+      if( !isAdmin(req) ) outPermissionDenied(req, rep);
 
       TextBinder repBinder = TextBinder.createInstance(runtimeProp,"/admin/boardListView.html");
       iLoop boardLoop = repBinder.createLoop("BOARD_LIST");
@@ -119,6 +138,8 @@ public class AdminController extends AbstractServletController {
    public void boardUpdate(HttpRequest req, HttpResponse rep) throws Exception {
       JasRuntimeProperties runtimeProp = req.getRuntimeProperties();
       Logger logger = getLogger(req);
+      sessionCheck(req, rep);
+      if( !isAdmin(req) ) outPermissionDenied(req, rep);
       
       Board board = new Board();
       

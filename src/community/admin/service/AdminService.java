@@ -1,11 +1,11 @@
-package lovefactory.admin.service;
+package community.admin.service;
 
 import java.util.ArrayList;
 
 import koonisoft.jas.JasRuntimeProperties;
-import lovefactory.admin.dao.AdminDao;
-import lovefactory.common.service.AbstractService;
-import lovefactory.user.User;
+import community.admin.dao.AdminDao;
+import community.common.service.AbstractService;
+import community.user.User;
 
 public class AdminService extends AbstractService {
 

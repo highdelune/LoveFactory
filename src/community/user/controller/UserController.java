@@ -1,14 +1,17 @@
-package lovefactory.user.controller;
+package community.user.controller;
 
 import koonisoft.jas.JasRuntimeProperties;
 import koonisoft.jas.binder.TextBinder;
 import koonisoft.jas.http.HttpRequest;
 import koonisoft.jas.http.HttpResponse;
+import koonisoft.jas.http.iSession;
 import koonisoft.jas.log.Logger;
-import lovefactory.common.controller.AbstractServletController;
-import lovefactory.user.User;
-import lovefactory.user.service.UserService;
-import lovefactory.util.SessionUtil;
+import community.Constants;
+import community.common.controller.AbstractServletController;
+import community.user.User;
+import community.user.service.UserService;
+import community.util.SHAEncrypt;
+import community.util.SessionUtil;
 
 public class UserController extends AbstractServletController {
    
@@ -26,7 +29,7 @@ public class UserController extends AbstractServletController {
       
       User user = new User();
       user.setUserID(req.getString("userId"));
-      user.setPassword(req.getString("userPw"));
+      user.setPassword(SHAEncrypt.encrypt(req.getString("userPw")));
       user.setUserNick(req.getString("userNick"));
       user.setUserName(req.getString("userName"));
       user.setUserPhone(req.getString("userPhone"));
@@ -44,6 +47,7 @@ public class UserController extends AbstractServletController {
    public void userDelView(HttpRequest req, HttpResponse rep) throws Exception {
       JasRuntimeProperties runtimeProp = req.getRuntimeProperties();
       Logger logger = getLogger(req);
+      sessionCheck(req, rep);
 
       TextBinder repBinder = TextBinder.createInstance(runtimeProp,"/user/userDelView.html");
       rep.out(repBinder);
@@ -52,6 +56,7 @@ public class UserController extends AbstractServletController {
    public void userDel(HttpRequest req, HttpResponse rep) throws Exception {
       JasRuntimeProperties runtimeProp = req.getRuntimeProperties();
       Logger logger = getLogger(req);
+      sessionCheck(req, rep);
       
       SessionUtil.sessionCheck(req, rep);
       
@@ -82,7 +87,7 @@ public class UserController extends AbstractServletController {
       SessionUtil.sessionCheck(req, rep);
       
       User user = new User();
-      user.setPassword(req.getString("userPw"));
+      user.setPassword(SHAEncrypt.encrypt(req.getString("userPw")));
       user.setNewPassword(req.getString("userNewPw"));
       user.setUserNick(req.getString("userNick"));
       user.setUserPhone(req.getString("userPhone"));
@@ -107,8 +112,8 @@ public class UserController extends AbstractServletController {
       Logger logger = getLogger(req);
       
       User user = new User();
-      user.setLoginID(req.getString("userId"));
-      user.setPassword(req.getString("userPw"));
+      user.setLoginID(req.getString("LOGINID"));
+      user.setPassword(SHAEncrypt.encrypt(req.getString("PASSWD")));
       
       UserService userService = new UserService(runtimeProp);
       user = userService.userLogin(user);
@@ -116,6 +121,9 @@ public class UserController extends AbstractServletController {
       String retVal = "F";
       
       if( null != user.getUserID() ) {
+         iSession session = req.getSession();
+         session.set(Constants.USER_SESSION_KEY, user);
+         
          retVal = "S";
       } else {
          retVal = "F";

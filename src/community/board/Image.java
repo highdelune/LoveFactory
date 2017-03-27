@@ -1,4 +1,4 @@
-package lovefactory.board;
+package community.board;
 
 public class Image {
    private String imageName = null;

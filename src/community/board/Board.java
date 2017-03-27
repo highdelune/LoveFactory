@@ -1,4 +1,6 @@
-package lovefactory.board;
+package community.board;
+
+import java.util.Date;
 
 public class Board {
    private int boardId = 0;
@@ -7,8 +9,12 @@ public class Board {
    private int articleId = 0;
    private String articleName = null;
    private String contents = null;
+   private String noticeYn = null;
    private int writerId  = 0;
    private String writer = null;
+   private int readCount = 0;
+   private int likeCount = 0;
+   private Date writeTime = null;
    private Image image1  = null;
    private Image image2  = null;
    private Image image3  = null;
@@ -56,6 +62,12 @@ public class Board {
    public void setContents(String contents) {
       this.contents = contents;
    }
+   public String getNoticeYn() {
+      return noticeYn;
+   }
+   public void setNoticeYn(String noticeYn) {
+      this.noticeYn = noticeYn;
+   }
    public int getWriterId() {
       return writerId;
    }
@@ -67,6 +79,24 @@ public class Board {
    }
    public void setWriter(String writer) {
       this.writer = writer;
+   }
+   public int getReadCount() {
+      return readCount;
+   }
+   public void setReadCount(int readCount) {
+      this.readCount = readCount;
+   }
+   public int getLikeCount() {
+      return likeCount;
+   }
+   public void setLikeCount(int likeCount) {
+      this.likeCount = likeCount;
+   }
+   public Date getWriteTime() {
+      return writeTime;
+   }
+   public void setWriteTime(Date writeTime) {
+      this.writeTime = writeTime;
    }
    public Image getImage1() {
       return image1;

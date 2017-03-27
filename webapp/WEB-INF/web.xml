@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>LoveFactory Project by JPDK(Java Power Development Kit)</display-name>
+  <display-name>Community Project by JPDK(Java Power Development Kit)</display-name>
   <description>
-    LoveFactory Project by JPDK(Java Power Development Kit)
+    Community Project by JPDK(Java Power Development Kit)
   </description>
   <listener>
     <listener-class>koonisoft.jas.config.ConfigLoadListener</listener-class>
   </listener>
   <context-param>
     <param-name>koonisoft.jas.config</param-name>
-    <param-value>D:/Utility/Android/webworkspace/LoveFactory/config/jas.xml</param-value>
-<!--     <param-value>/home/lovefactory/lovefactory/config/jas.xml</param-value> -->
+    <param-value>D:/private/Community/config/jas.xml</param-value>
   </context-param>
   <servlet>
     <servlet-name>JasServletDispatcher</servlet-name>

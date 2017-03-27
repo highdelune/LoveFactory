@@ -1,4 +1,4 @@
-package lovefactory.common.service;
+package community.common.service;
 
 import koonisoft.jas.JasRuntimeProperties;
 
