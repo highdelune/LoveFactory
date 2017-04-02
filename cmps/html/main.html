@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type='text/javascript' src="<!--[c, jas.system.context.path]-->/script/jqgrid/js/jquery-1.9.0.min.js"></script>
+<script type='text/javascript' src="<!--[c, jas.system.context.path]-->/script/iframeheight.js"></script>
+<script>
+$(function(){
+   $(".iframe").iframeHeight({
+      resizeMaxTry : 2,
+      resizeWaitTime : 300,
+      minimumHeight : 81,
+      defaultHeight : 81,
+      heightOffset  : 81,
+      exceptPages   : "",
+      debugMode     : false,
+      visibilitybeforeload : true,
+      blockCrossDomain : true,
+      externalHeightName : "bodyHeight",
+      onMessageFunctionName : "getHeight",
+      domainName : "*",
+      watcher : true,
+      watcherTime : 400
+   });
+});
+</script>
+</head>
+<body>
+<iframe width="100%" height="81px" name="top" frameborder="0" src="<!--[c, jas.system.context.path]-->/top.svc">
+</iframe>
+<iframe class="iframe" width="100%" name="main" frameborder="0" src="<!--[c, jas.system.context.path]-->/mainFrame.svc">
+</iframe>
+</body>
+</html>

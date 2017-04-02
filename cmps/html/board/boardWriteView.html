@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--[f, /common/common_css_script.html]-->
+<!--[f, /common/board_script.html]-->
+<!--[f, /common/smartEditor.html]-->
+<script type="text/javascript">
+function submitContents() {
+   // 에디터의 내용이 textarea에 적용된다.
+   oEditors.getById["write_field"].exec("UPDATE_CONTENTS_FIELD", []);
+
+   // 에디터의 내용에 대한 값 검증은 이곳에서
+   // document.getElementById("ir1").value를 이용해서 처리한다.
+
+   try {
+       $("#write_content").submit();
+   } catch(e) {
+   }
+}
+</script>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>
+   </style>
+</head>
+<body>
+<div class="container-clients">
+   <div class="container">
+      <form id="write_content" name="write_content" action="<!--[c, jas.system.context.path]-->/board/saveContent.svc" enctype="multipart/form-data" method="POST">
+         <input type="hidden" id="article_id" name="article_id" value="<!--[r, ARTICLE_ID]-->"/>
+         <label>게시판</label>
+         <select id="bbs_id" name="bbs_id">
+<!--[l, BOARD_LIST]-->
+   <option value="<!--[r, BOARD_ID]-->"><!--[r, BOARD_NAME]--></option>
+<!--[/BOARD_LIST]-->
+         </select>
+         <br>
+         <label>제목</label><input type="text" id="subject" name="subject" value="<!--[r, ARTICLE_NAME]-->">
+         <textarea name="write_field" id="write_field" rows="10" cols="100"><!--[r, CONTENTS]--></textarea>
+         <input type="submit" value="등록" onclick="javascript:submitContents()"/>
+      </form>
+   </div>
+</div>
+
+<script type="text/javascript">
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "write_field",
+    sSkinURI: "<!--[c, jas.system.context.path]-->/board/loadEditor.svc",
+    fCreator: "createSEditor2"
+});
+</script>
+</body>
+</html>

@@ -46,3 +46,8 @@ CREATE TABLE LF_USER_GRADE(
    GRADE_NAME VARCHAR(255),
    GRADE_DESC VARCHAR(255)
 );
+
+CREATE TABLE lf_admin_menu (
+  MENU_ID INT not null auto_increment primary key,
+  MENU_NAME VARCHAR(255)
+) ENGINE=InnoDB;

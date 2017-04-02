@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--[f, /common/common_css_script.html]-->
+<!--[f, /common/board_script.html]-->
+<link href="<!--[c, jas.system.context.path]-->/css/board/winterblues.css" rel="stylesheet">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>
+   div{
+      display:inline-block;
+      position:relative;
+   }
+   .buttons{
+      width:70%;
+      float:right;
+   }
+   .board_table{
+      float:right;
+   }
+   </style>
+</head>
+<body>
+
+<div class="container-clients">
+   <div class="container">
+      <div  style="width:30%; text-align:center; height:100%;">
+	      <table class="board_list_table" border="1" style="margin:0 auto;">
+	         <tr class="board_list_tr" style="">
+	            <th class="board_list_th" style="">게시판이름</th>
+	         </tr>
+<!--[l, BOARD_LIST]-->
+<tr style="">
+   <td class="board_list_td" style=""><a href="<!--[c, jas.system.context.path]-->/board/community.svc?bbsNo=<!--[r, BOARD_ID]-->"><!--[r, BOARD_NAME]--></a></td>
+</tr>
+<!--[/BOARD_LIST]-->
+         </table>
+      </div>
+      
+      <div class="board_table" style="width:70%;">
+         <table>
+            <tr>
+               <th>글번호</th>
+               <th>제목</th>
+               <th>작성자</th>
+               <th>작성일</th>
+               <th>조회</th>
+            </tr>
+   <!--[l, CONTENT_LIST]-->
+            <tr>
+               <td><!--[r, CONTENT_NUM]--></td>
+               <td><a href="<!--[c, jas.system.context.path]-->/board/contentview.svc?content=<!--[r, CONTENT_NUM]-->"><!--[r, CONTENT_TITLE]--></a></td>
+               <td><!--[r, CONTENT_WRITER]--></td>
+               <td><!--[r, CONTENT_DATE]--></td>
+               <td><!--[r, CONTENT_READ]--></td>
+            </tr>
+   <!--[/CONTENT_LIST]-->
+         </table>
+      </div>
+      <div class="paging">
+         
+      </div>
+      <div class="buttons">
+         <input type="button" id="bbs_write" name="bbs_write" value="등록"/>
+      </div>
+   </div>
+</div>
+
+</body>
+</html>
